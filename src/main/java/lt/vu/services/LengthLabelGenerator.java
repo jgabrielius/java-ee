@@ -9,7 +9,7 @@ public class LengthLabelGenerator implements Serializable {
 
     public String generateLabel(int characterCount) {
         if (characterCount < 50) {
-            return "short!";
+            return "short";
         } else if (characterCount < 200) {
             return "medium";
         } else {
