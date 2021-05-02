@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+>
+<h:head/>
+<h:body>
+    <h2>Available categories:</h2>
+    <ol>
+        <ui:repeat value="#{categories.allCategories}" var="category">
+            <li><h:link value="#{category.name}" outcome="notes?categoryId=#{category.id}" /></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{categories.categoryToCreate.name}" required="true" />
+        <h:commandButton value="Create a new category" action="#{categories.createCategory}" />
+    </h:form>
+
+    <h2>Available people:</h2>
+    <ol>
+        <ui:repeat value="#{people.allPeople}" var="person">
+            <li>#{person.name}</li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{people.personToCreate.name}" required="true" />
+        <h:commandButton value="Create a new person" action="#{people.createPerson}" />
+    </h:form>
+</h:body>
+</html>

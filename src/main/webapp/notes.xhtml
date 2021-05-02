@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Notes for category #{notesForCategory.category.name}:</h2>
+    <ol>
+        <ui:repeat value="#{notesForCategory.category.notes}" var="_note">
+            <li>
+                <h:link value="#{_note.note}" outcome="note?noteId=#{_note.id}" /> [#{_note.label}]
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{notesForCategory.noteToCreate.note}" required="true" />
+        <h:commandButton value="Create a note for category" action="#{notesForCategory.createNote}" >
+            <f:param name="categoryId" value="#{notesForCategory.category.id}" />
+        </h:commandButton>
+    </h:form>
+</h:body>
+</html>
